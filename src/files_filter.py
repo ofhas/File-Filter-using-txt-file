@@ -7,6 +7,7 @@ from tkinter import *
 import glob
 from tkinter import messagebox
 
+
 root = tk.Tk()
 tkvar = StringVar(root)
 
@@ -35,7 +36,7 @@ def copyFiles(source, destination, txtFile):
                 if count2 == count1:
                     break
                 else:
-                    shutil.copy(os.path.join(root, filename),
+                    shutil.copy(os.path.join(root, filename),  # this will preform a "copy" action on items appearing on the txt file
                                 destination)
                     count2 += 1
                     print("Copied!")
@@ -63,7 +64,7 @@ def cutFilesOne(source, destination, txtFile):  # need to change to cut option/m
                 if count2 == count1:
                     break
                 else:
-                    shutil.move(os.path.join(root, filename),
+                    shutil.move(os.path.join(root, filename),  # this will preform a "cut" action on items appearing on the txt file
                                 destination)
                     count2 += 1
                     print("Files cut!")
@@ -90,23 +91,13 @@ def getFile():
 
 
 def createTxt(destinationFolder, fileType):
+    print(destinationFolder)
+    print(fileType)
     os.chdir(destinationFolder)
     files = glob.glob('*.' + fileType)
     with open('files_list.txt', 'w') as in_files:
         in_files.writelines(os.path.join(
             destinationFolder, fn) + '\n' for fn in files)
-
-
-def fileType(choice):
-    global types
-    array = ['jpg', 'tiff', 'JPG', '.jpeg']
-    for item in array:
-        if item == choice:
-            types = item
-
-
-def openNewWindow():
-    pass
 
 
 ############################################################################################################
@@ -145,8 +136,5 @@ canvas1.create_window(200, 190, window=move)
 ###########################################################################################################
 # creating txt file buttons section
 
-createwTxtFile = tk.Button(text='    Create Text File    ', command=openNewWindow,
-                           bg='green', fg='white', font=('helvetica', 12, 'bold'))
-canvas1.create_window(150, 230, window=createwTxtFile)
 
 root.mainloop()
