@@ -29,10 +29,8 @@ def copyFiles(source, destination, txtFile):
     count2 = 0
 
     for root, _, filenames in os.walk(source):
-        for i in range(len(filenames)):
-            filenames[i] = filenames[i].casefold()
         for filename in filenames:
-            if filename in filenames_to_copy:
+            if filename.casefold() in filenames_to_copy:
                 if count2 == count1:
                     break
                 else:
@@ -57,10 +55,8 @@ def cutFilesOne(source, destination, txtFile):  # need to change to cut option/m
 
     count2 = 0
     for root, _, filenames in os.walk(source):
-        for i in range(len(filenames)):
-            filenames[i] = filenames[i].casefold()
         for filename in filenames:
-            if filename in filenames_to_copy:
+            if filename.casefold() in filenames_to_copy:
                 if count2 == count1:
                     break
                 else:
@@ -134,7 +130,7 @@ canvas1.create_window(200, 190, window=move)
 
 
 ###########################################################################################################
-# creating txt file buttons section
+
 
 
 root.mainloop()
