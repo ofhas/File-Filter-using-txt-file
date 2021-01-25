@@ -87,8 +87,6 @@ def getFile():
 
 
 def createTxt(destinationFolder, fileType):
-    print(destinationFolder)
-    print(fileType)
     os.chdir(destinationFolder)
     files = glob.glob('*.' + fileType)
     with open('files_list.txt', 'w') as in_files:
