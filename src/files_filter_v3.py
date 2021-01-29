@@ -3,11 +3,8 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 import shutil
-from functools import partial
 from tkinter import *
-import glob
 from tkinter import messagebox
-import time
 from tkinter.ttk import *
 
 root = tk.Tk()
@@ -27,7 +24,6 @@ def copyFiles(source, destination, txtFile):
         filenames_to_copy[i] = filenames_to_copy[i].casefold()
         count1 += 1
     count2 = 0
-    iteration = 0
     for root, _, filenames in os.walk(source):
         for filename in filenames:
             if filename.casefold() in filenames_to_copy:
@@ -46,23 +42,23 @@ def copyFiles(source, destination, txtFile):
     messagebox.showinfo(
         "Information", f"{count2} out of {count1} files have been copied!")
 
+    ####initialize progress bar
 
-
+    bar['value'] = 0
+    percent.set(str(0) + "%")
 
 
 ###this function will move files given a source destination and a file path###
 
 
-def cutFilesOne(source, destination, txtFile):  # need to change to cut option/move
-
+def cutFilesOne(source, destination, txtFile):
     count1 = 0
 
     with open(txtFile, 'r') as lines:
         filenames_to_copy = list(line.rstrip() for line in lines)
         for i in range(len(filenames_to_copy)):
             filenames_to_copy[i] = filenames_to_copy[i].casefold()
-    for number in filenames_to_copy:
-        count1 += 1
+            count1 += 1
 
     count2 = 0
     for root, _, filenames in os.walk(source):
@@ -76,11 +72,17 @@ def cutFilesOne(source, destination, txtFile):  # need to change to cut option/m
                                 destination)
                     count2 += 1
                     percentage = ((count2 / count1) * 100)
+
                     bar['value'] = percentage
                     percent.set(str(percentage) + "%")
 
     messagebox.showinfo(
         "Information", f"{count2} out of {count1} files have been moved!")
+
+    ###initialize progress bar
+
+    bar['value'] = 0
+    percent.set(str(0) + "%")
 
 
 def source():
@@ -136,7 +138,6 @@ percentLable = Label(root, textvariable=percent).pack()
 text = StringVar()
 
 ###########################################################################################################
-# creating txt file buttons section
 
 
 root.mainloop()
