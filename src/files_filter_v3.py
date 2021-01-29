@@ -39,8 +39,9 @@ def copyFiles(source, destination, txtFile):
                                 # this will preform a "copy" action on items appearing on the txt file
                                 destination)
                     count2 += 1
-                    bar['value'] = ((count2 / count1) * 100)
-                    percent.set(str((count2 / count1) * 100) + "%")
+                    percentage = ((count2 / count1) * 100)
+                    bar['value'] = percentage
+                    percent.set(str(percentage) + "%")
 
     messagebox.showinfo(
         "Information", f"{count2} out of {count1} files have been copied!")
@@ -74,8 +75,9 @@ def cutFilesOne(source, destination, txtFile):  # need to change to cut option/m
                                 # this will preform a "cut" action on items appearing on the txt file
                                 destination)
                     count2 += 1
-                    bar['value'] = ((count2 / count1) * 100)
-                    percent.set(str((count2 / count1) * 100) + "%")
+                    percentage = ((count2 / count1) * 100)
+                    bar['value'] = percentage
+                    percent.set(str(percentage) + "%")
 
     messagebox.showinfo(
         "Information", f"{count2} out of {count1} files have been moved!")
