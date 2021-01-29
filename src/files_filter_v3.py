@@ -41,7 +41,6 @@ def copyFiles(source, destination, txtFile):
                     count2 += 1
                     bar['value'] = ((count2 / count1) * 100)
                     percent.set(str((count2 / count1) * 100) + "%")
-                    print(bar['value'])
 
     messagebox.showinfo(
         "Information", f"{count2} out of {count1} files have been copied!")
