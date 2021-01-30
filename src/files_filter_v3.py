@@ -6,7 +6,8 @@ import shutil
 from tkinter import *
 from tkinter import messagebox
 from tkinter.ttk import *
-import time
+
+
 root = tk.Tk()
 tkvar = StringVar(root)
 
