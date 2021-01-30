@@ -6,7 +6,7 @@ import shutil
 from tkinter import *
 from tkinter import messagebox
 from tkinter.ttk import *
-
+import time
 root = tk.Tk()
 tkvar = StringVar(root)
 
@@ -37,7 +37,8 @@ def copyFiles(source, destination, txtFile):
                     count2 += 1
                     percentage = ((count2 / count1) * 100)
                     bar['value'] = percentage
-                    percent.set(str(percentage) + "%")
+                    percent.set(str(round(percentage, 1)) + "%")
+                    bar.update()
 
     messagebox.showinfo(
         "Information", f"{count2} out of {count1} files have been copied!")
@@ -70,11 +71,13 @@ def cutFilesOne(source, destination, txtFile):
                     shutil.move(os.path.join(root, filename),
                                 # this will preform a "cut" action on items appearing on the txt file
                                 destination)
+
                     count2 += 1
                     percentage = ((count2 / count1) * 100)
 
                     bar['value'] = percentage
-                    percent.set(str(percentage) + "%")
+                    percent.set(str(round(percentage, 1)) + "%")
+                    bar.update()
 
     messagebox.showinfo(
         "Information", f"{count2} out of {count1} files have been moved!")
@@ -108,25 +111,25 @@ sourceDirectory = tk.Button(text="      Source Directory     ",
 canvas1.create_window(150, 50, window=sourceDirectory)
 
 destinationDirectory = tk.Button(text="      Destination Directory     ",
-                                 command=destination, bg='green', fg='white', font=('helvetica', 12, 'bold'))
+                                 command=destination, bg='black', fg='white', font=('helvetica', 12, 'bold'))
 canvas1.create_window(150, 90, window=destinationDirectory)
 
 txtFile = tk.Button(text="      TXT File     ",
-                    command=getFile, bg='green', fg='white', font=('helvetica', 12, 'bold'))
+                    command=getFile, bg='blue', fg='white', font=('helvetica', 12, 'bold'))
 canvas1.create_window(150, 130, window=txtFile)
 
 ####
 copy = tk.Button(text='     Copy    ',
                  command=lambda: copyFiles(
                      source, destination, txtFile),
-                 bg='green', fg='white', font=('helvetica', 12, 'bold'))
+                 bg='red', fg='white', font=('helvetica', 12, 'bold'))
 
 canvas1.create_window(100, 190, window=copy)
 
 move = tk.Button(text='     Move    ',
                  command=lambda: cutFilesOne(
                      source, destination, txtFile),
-                 bg='green', fg='white', font=('helvetica', 12, 'bold'))
+                 bg='silver', fg='white', font=('helvetica', 12, 'bold'))
 
 canvas1.create_window(200, 190, window=move)
 
