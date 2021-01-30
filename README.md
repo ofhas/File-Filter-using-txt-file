@@ -5,6 +5,4 @@ Every file name should have the type of file after it's name, for example: examp
 You could use the file lister repo locate here: https://github.com/ofhas/GUI-txt-file-from-folder/blob/master/src/listTXTFile.py to generate a txt file list of files you wish to move or copy to a destination folder.
 
 
-a\
-b\
-c
+
