@@ -18,31 +18,31 @@ canvas1.pack()
 
 ###this function will copy files given a source destination and a file path###
 def copyFiles(source, destination, txtFile):
-    count1 = 0
+    numOfFilesToCopy = 0
     with open(txtFile, 'r') as lines:
         filenames_to_copy = list(line.rstrip() for line in lines)
     for i in range(len(filenames_to_copy)):
         filenames_to_copy[i] = filenames_to_copy[i].casefold()
-        count1 += 1
-    count2 = 0
+        numOfFilesToCopy += 1
+    numOfFilesCopied = 0
     for root, _, filenames in os.walk(source):
         for filename in filenames:
             if filename.casefold() in filenames_to_copy:
-                if count2 == count1:
+                if numOfFilesCopied == numOfFilesToCopy:
 
                     break
                 else:
                     shutil.copy(os.path.join(root, filename),
                                 # this will preform a "copy" action on items appearing on the txt file
                                 destination)
-                    count2 += 1
-                    percentage = ((count2 / count1) * 100)
+                    numOfFilesCopied += 1
+                    percentage = ((numOfFilesCopied / numOfFilesToCopy) * 100)
                     bar['value'] = percentage
                     percent.set(str(round(percentage, 1)) + "%")
                     bar.update()
 
     messagebox.showinfo(
-        "Information", f"{count2} out of {count1} files have been copied!")
+        "Information", f"{numOfFilesCopied} out of {numOfFilesToCopy} files have been copied!")
 
     ####initialize progress bar
 
@@ -54,34 +54,34 @@ def copyFiles(source, destination, txtFile):
 
 
 def cutFilesOne(source, destination, txtFile):
-    count1 = 0
+    numOfFilesToCopy = 0
 
     with open(txtFile, 'r') as lines:
         filenames_to_copy = list(line.rstrip() for line in lines)
         for i in range(len(filenames_to_copy)):
             filenames_to_copy[i] = filenames_to_copy[i].casefold()
-            count1 += 1
+            numOfFilesToCopy += 1
 
-    count2 = 0
+    numOfFilesCopied = 0
     for root, _, filenames in os.walk(source):
         for filename in filenames:
             if filename.casefold() in filenames_to_copy:
-                if count2 == count1:
+                if numOfFilesCopied == numOfFilesToCopy:
                     break
                 else:
                     shutil.move(os.path.join(root, filename),
                                 # this will preform a "cut" action on items appearing on the txt file
                                 destination)
 
-                    count2 += 1
-                    percentage = ((count2 / count1) * 100)
+                    numOfFilesCopied += 1
+                    percentage = ((numOfFilesCopied / numOfFilesToCopy) * 100)
 
                     bar['value'] = percentage
                     percent.set(str(round(percentage, 1)) + "%")
                     bar.update()
 
     messagebox.showinfo(
-        "Information", f"{count2} out of {count1} files have been moved!")
+        "Information", f"{numOfFilesCopied} out of {numOfFilesToCopy} files have been moved!")
 
     ###initialize progress bar
 
