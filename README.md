@@ -7,7 +7,7 @@ You could use the file lister repo locate here: https://github.com/ofhas/GUI-txt
 If you wish to convert the script into an exe file you could use the pyinstaller module, you should do the followiing:\
 pip install pyinstaller.\
 Open the files_filter_v3.py file folder.\
-Right click your mouse and open powershell window.\
+Shift + right click your mouse and open powershell window.\
 Write the command "pyinstaller -w files_filter_v3.py".\
 This will create a dist folder inside it you'll find a folder with the .py file name which has the exe file.
 
