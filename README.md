@@ -12,5 +12,10 @@ Write the command "pyinstaller -w files_filter_v3.py".\
 This will create a dist folder inside it you'll find a folder with the .py file name which has the exe file.
 
 
+Result:
+
+![alt text](https://github.com/ofhas/File-Filter-using-txt-file/blob/master/File%20Filter.JPG)
+
+
 
 
